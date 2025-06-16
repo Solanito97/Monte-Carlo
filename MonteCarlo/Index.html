@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación Monte Carlo - Inventarios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor para mensajes -->
+    <div id="mensajes"></div>
+    
+    <h1>Simulación de Inventarios - Monte Carlo</h1>
+
+    <div class="container">
+        <section class="input-section">
+            <h2>Ingresar Datos de Demanda</h2>
+            <div class="input-group">
+                <input type="number" id="demanda" placeholder="Demanda" min="0">
+                <input type="number" id="frecuencia" placeholder="Frecuencia" min="1">
+                <button onclick="agregarDato()" class="btn-primary">Agregar</button>
+                <button onclick="limpiarTodosDatos()" class="btn-secondary">Limpiar Todo</button>
+            </div>
+
+            <h3>Datos Ingresados</h3>
+            <div class="table-container">
+                <table id="tablaDatos"></table>
+            </div>
+        </section>
+
+        <section class="simulation-section">
+            <h2>Parámetros de Simulación</h2>
+            <div class="input-group">
+                <input type="number" id="diasSimulacion" placeholder="Días a Simular (mínimo 100)" min="100">
+                <input type="number" id="nivelInventario" placeholder="Nivel de Inventario" min="0">
+                <input type="number" id="costoAlmacen" placeholder="Costo Almacenamiento" min="0" step="0.01">
+                <input type="number" id="costoEscasez" placeholder="Costo Escasez" min="0" step="0.01">
+                <button onclick="simular()" class="btn-primary">Simular</button>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2>Resultados de la Simulación</h2>
+            <div id="resultadoSimulacion"></div>
+
+            <div class="chart-container">
+                <canvas id="graficoResultados"></canvas>
+            </div>
+
+            <div class="table-section">
+                <h3>Detalle de Simulación</h3>
+                <div class="controls">
+                    <button onclick="toggleTablaCompleta()" id="btnToggleTabla" class="btn-secondary">
+                        Mostrar Tabla Completa
+                    </button>
+                    <button onclick="exportarResultados()" class="btn-secondary">
+                        Exportar Resultados
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table id="tablaResultados"></table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="funcionalidad.js"></script>
+</body>
+</html>
